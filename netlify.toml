@@ -1,6 +1,6 @@
 [build]
-  command = "npm run build"
-  publish = ".netlify"
+  command = "chmod +x node_modules/.bin/* 2>/dev/null; npm run build"
+  publish = "dist"
   functions = ".netlify/functions-internal"
 
 [build.environment]
@@ -8,5 +8,5 @@
 
 [[redirects]]
   from = "/*"
-  to = "/.netlify/functions/ssr/:splat"
+  to = "/.netlify/functions/server/:splat"
   status = 200
