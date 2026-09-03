@@ -1,0 +1,1 @@
+import{t as e}from"./react-SIfiwpqq.js";import{r as t}from"./dist-CB_35oZq.js";import{r as n}from"./useRouter-B4RdKobV.js";e();var r=n();function i({className:e,...n}){return(0,r.jsx)(`label`,{"data-slot":`label`,className:t(`text-sm font-medium text-foreground/80 peer-disabled:cursor-not-allowed peer-disabled:opacity-50`,e),...n})}export{i as t};

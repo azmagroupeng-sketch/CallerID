@@ -1,0 +1,104 @@
+@import url("https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500;600;700&display=swap");
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Vazirmatn", "Tahoma", "Segoe UI", system-ui, sans-serif;
+
+  --color-background: #0c0d0b;
+  --color-foreground: #eceee6;
+  --color-card: #161714;
+  --color-card-foreground: #eceee6;
+  --color-muted: #1c1e19;
+  --color-muted-foreground: #9aa094;
+  --color-primary: #d4d8cc;
+  --color-primary-foreground: #141510;
+  --color-secondary: #22241f;
+  --color-secondary-foreground: #eceee6;
+  --color-accent: #22241f;
+  --color-accent-foreground: #eceee6;
+  --color-border: #2a2c26;
+  --color-input: #2a2c26;
+  --color-ring: #d4d8cc;
+  --color-ok: #8fba8a;
+  --color-warn: #c9a06a;
+  --color-destructive: #c9786a;
+  --color-popover: #161714;
+  --color-popover-foreground: #eceee6;
+
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --radius-xl: 24px;
+  --radius: 12px;
+}
+
+:root {
+  --motion-stagger: 40ms;
+  --motion-micro: 80ms;
+  --motion-quick: 150ms;
+  --motion-fast: 250ms;
+  --motion-medium: 350ms;
+  --motion-slow: 400ms;
+  --ease-smooth-out: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
+  --ease-in-out: ease-in-out;
+  --shadow-border: inset 0 0 0 1px var(--color-border);
+  --shadow-border-hover: inset 0 0 0 1px
+    color-mix(in oklab, var(--color-foreground) 28%, transparent);
+}
+
+@layer base {
+  button:not(:disabled),
+  [role="button"]:not(:disabled) {
+    cursor: pointer;
+  }
+
+  html {
+    color-scheme: dark;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  body {
+    background: var(--color-background);
+    color: var(--color-foreground);
+    font-family: var(--font-sans);
+    overflow-x: hidden;
+  }
+
+  h1,
+  h2,
+  h3 {
+    text-wrap: balance;
+  }
+
+  p {
+    text-wrap: pretty;
+  }
+}
+
+@keyframes rise-in {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.rise-in {
+  animation: rise-in var(--motion-fast) var(--ease-smooth-out) both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

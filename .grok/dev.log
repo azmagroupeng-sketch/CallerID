@@ -1,0 +1,311 @@
+
+  [32m[1mVITE[22m v8.2.2[39m  [2mready in [0m[1m29382[22m[2m[0m ms[22m
+
+  [32m➜[39m  [1mLocal[22m:   [36mhttp://localhost:[1m8080[22m/[39m
+  [32m➜[39m  [1mNetwork[22m: [36mhttp://172.19.232.124:[1m8080[22m/[39m  [2mWi-Fi[22m
+[2m[32m  ➜[39m[22m[2m  press [22m[1mh + enter[22m[2m to show help[22m
+[2m2:40:49 PM[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [optimizer] bundling dependencies...
+[2m2:42:41 PM[22m [36m[1m[vite][22m[39m [34m[2m(ssr)[22m[39m connected.
+[2m2:43:47 PM[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/styles.css?direct[22m
+[2m2:44:05 PM[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [optimizer] bundling dependencies...
+[2m2:44:06 PM[22m [31m[1m[vite][22m[39m [31m[2m(client)[22m[39m [31m[Unhandled error] [1mTypeError[22m: Failed to fetch dynamically imported module: http://127.0.0.1:8080/node_modules/@tanstack/react-start/dist/plugin/default-entry/client.tsx
+[39m
+[2m2:44:07 PM[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mdependencies optimized: [33m@better-auth/core/env, @better-auth/core/error, @better-auth/core/utils/error-codes, @better-auth/core/utils/string, @better-auth/core/utils/url, @better-fetch/fetch, @tanstack/router-core/isServer, defu, nanostores[32m[39m
+[2m2:44:07 PM[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [optimizer] bundling dependencies...
+[2m2:44:10 PM[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mdependencies optimized: [33m@tanstack/router-core, @tanstack/router-core/ssr/client, seroval[32m[39m
+[2m2:44:10 PM[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32moptimized dependencies changed. reloading[39m
+2026-09-02T11:14:17.077Z WARN [Better Auth]: User not found
+[2m2:44:22 PM[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [optimizer] bundling dependencies...
+[2m2:44:26 PM[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [optimizer] bundling dependencies...
+[2m2:44:27 PM[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mdependencies optimized: [33m@better-auth/core, @better-auth/core/api, @better-auth/core/context, @better-auth/core/db, @better-auth/core/db/adapter, @better-auth/core/instrumentation, @better-auth/core/oauth2, @better-auth/core/social-providers, @better-auth/core/utils/db, @better-auth/core/utils/deprecate, @better-auth/core/utils/fetch-metadata, @better-auth/core/utils/host, @better-auth/core/utils/id, @better-auth/core/utils/ip, @better-auth/core/utils/is-api-error, @better-auth/core/utils/json, @better-auth/kysely-adapter, @better-auth/telemetry, @better-auth/utils, @better-auth/utils/base64, @better-auth/utils/binary, @better-auth/utils/hash, @better-auth/utils/hmac, @better-auth/utils/otp, @better-auth/utils/password, @better-auth/utils/random, @noble/ciphers/chacha.js, @noble/ciphers/utils.js, @noble/hashes/hkdf.js, @noble/hashes/sha2.js, @noble/hashes/sha3.js, @noble/hashes/utils.js, @tanstack/history, @tanstack/router-core/ssr/server, better-call, h3-v2, jose/errors[32m[39m
+[2m2:44:27 PM[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32moptimized dependencies changed. reloading[39m
+2026-09-02T11:16:26.073Z WARN [Better Auth]: User not found
+[2m2:48:29 PM[22m [31m[1m[vite][22m[39m [31m[2m(client)[22m[39m [31m[Unhandled error] [1mError[22m: Hydration failed because the server rendered HTML didn't match the client. As a result this tree will be regenerated on the client. This can happen if a SSR-ed Client Component used:
+
+- A server/client branch `if (typeof window !== 'undefined')`.
+- Variable input such as `Date.now()` or `Math.random()` which changes each time it's called.
+- Date formatting in a user's locale which doesn't match the server.
+- External changing data without sending a snapshot of it along with the HTML.
+- Invalid HTML tag nesting.
+
+It can also happen if the client has a browser extension installed which messes with the HTML before React loaded.
+
+https://react.dev/link/hydration-mismatch
+
+  ...
+    <AppShell>
+      <div className="min-h-dvh ...">
+        <OutletImpl>
+          <Suspense fallback={null}>
+            <MatchImpl routeId="/login">
+              <MatchView router={{...}} match={{id:"/login...", ...}}>
+                <SafeFragment>
+                  <SafeFragment fallback={null}>
+                    <CatchBoundary getResetKey={function getResetKey} errorComponent={function AppErrorComponent} ...>
+                      <SafeFragment fallback={function fallback}>
+                        <MatchInnerImpl match={{id:"/login...", ...}}>
+                          <Lazy>
+                            <LoginPage>
+                              <div
++                               className="grid min-h-dvh place-items-center bg-background px-5 text-foreground"
+-                               className="grid min-h-dvh place-items-center bg-background text-sm text-muted-foreground"
+                              >
++                               <div className="w-full max-w-sm">
+-                               در حال بررسی نشست…
+        ...
+
+[39m > throwOnHydrationMismatch node_modules/react-dom/cjs/react-dom-client.development.js:5238:10
+ > beginWork node_modules/react-dom/cjs/react-dom-client.development.js:12027:16
+ > runWithFiberInDEV node_modules/react-dom/cjs/react-dom-client.development.js:871:29
+ > performUnitOfWork node_modules/react-dom/cjs/react-dom-client.development.js:17641:21
+ > workLoopConcurrentByScheduler node_modules/react-dom/cjs/react-dom-client.development.js:17635:8
+ > renderRootConcurrent node_modules/react-dom/cjs/react-dom-client.development.js:17617:14
+ > performWorkOnRoot node_modules/react-dom/cjs/react-dom-client.development.js:16503:10
+ > performWorkOnRootViaSchedulerTask node_modules/react-dom/cjs/react-dom-client.development.js:18957:6
+ > MessagePort.performWorkUntilDeadline node_modules/scheduler/cjs/scheduler.development.js:45:47
+
+[2m2:48:40 PM[22m [31m[1m[vite][22m[39m [31m[2m(client)[22m[39m [31m[Unhandled error] [1mError[22m: Hydration failed because the server rendered HTML didn't match the client. As a result this tree will be regenerated on the client. This can happen if a SSR-ed Client Component used:
+
+- A server/client branch `if (typeof window !== 'undefined')`.
+- Variable input such as `Date.now()` or `Math.random()` which changes each time it's called.
+- Date formatting in a user's locale which doesn't match the server.
+- External changing data without sending a snapshot of it along with the HTML.
+- Invalid HTML tag nesting.
+
+It can also happen if the client has a browser extension installed which messes with the HTML before React loaded.
+
+https://react.dev/link/hydration-mismatch
+
+  ...
+    <AppShell>
+      <div className="min-h-dvh ...">
+        <OutletImpl>
+          <Suspense fallback={null}>
+            <MatchImpl routeId="/login">
+              <MatchView router={{...}} match={{id:"/login...", ...}}>
+                <SafeFragment>
+                  <SafeFragment fallback={null}>
+                    <CatchBoundary getResetKey={function getResetKey} errorComponent={function AppErrorComponent} ...>
+                      <SafeFragment fallback={function fallback}>
+                        <MatchInnerImpl match={{id:"/login...", ...}}>
+                          <Lazy>
+                            <LoginPage>
+                              <div
++                               className="grid min-h-dvh place-items-center bg-background px-5 text-foreground"
+-                               className="grid min-h-dvh place-items-center bg-background text-sm text-muted-foreground"
+                              >
++                               <div className="w-full max-w-sm">
+-                               در حال بررسی نشست…
+        ...
+
+[39m > throwOnHydrationMismatch node_modules/react-dom/cjs/react-dom-client.development.js:5238:10
+ > beginWork node_modules/react-dom/cjs/react-dom-client.development.js:12027:16
+ > runWithFiberInDEV node_modules/react-dom/cjs/react-dom-client.development.js:871:29
+ > performUnitOfWork node_modules/react-dom/cjs/react-dom-client.development.js:17641:21
+ > workLoopConcurrentByScheduler node_modules/react-dom/cjs/react-dom-client.development.js:17635:8
+ > renderRootConcurrent node_modules/react-dom/cjs/react-dom-client.development.js:17617:14
+ > performWorkOnRoot node_modules/react-dom/cjs/react-dom-client.development.js:16503:10
+ > performWorkOnRootViaSchedulerTask node_modules/react-dom/cjs/react-dom-client.development.js:18957:6
+ > MessagePort.performWorkUntilDeadline node_modules/scheduler/cjs/scheduler.development.js:45:47
+
+[2m2:59:21 PM[22m [31m[1m[vite][22m[39m [31m[2m(client)[22m[39m [31m[Unhandled error] [1mError[22m: Hydration failed because the server rendered HTML didn't match the client. As a result this tree will be regenerated on the client. This can happen if a SSR-ed Client Component used:
+
+- A server/client branch `if (typeof window !== 'undefined')`.
+- Variable input such as `Date.now()` or `Math.random()` which changes each time it's called.
+- Date formatting in a user's locale which doesn't match the server.
+- External changing data without sending a snapshot of it along with the HTML.
+- Invalid HTML tag nesting.
+
+It can also happen if the client has a browser extension installed which messes with the HTML before React loaded.
+
+https://react.dev/link/hydration-mismatch
+
+  ...
+    <AppShell>
+      <div className="min-h-dvh ...">
+        <OutletImpl>
+          <Suspense fallback={null}>
+            <MatchImpl routeId="/login">
+              <MatchView router={{...}} match={{id:"/login...", ...}}>
+                <SafeFragment>
+                  <SafeFragment fallback={null}>
+                    <CatchBoundary getResetKey={function getResetKey} errorComponent={function AppErrorComponent} ...>
+                      <SafeFragment fallback={function fallback}>
+                        <MatchInnerImpl match={{id:"/login...", ...}}>
+                          <Lazy>
+                            <LoginPage>
+                              <div
++                               className="grid min-h-dvh place-items-center bg-background px-5 text-foreground"
+-                               className="grid min-h-dvh place-items-center bg-background text-sm text-muted-foreground"
+                              >
++                               <div className="w-full max-w-sm">
+-                               در حال بررسی نشست…
+        ...
+
+[39m > throwOnHydrationMismatch node_modules/react-dom/cjs/react-dom-client.development.js:5238:10
+ > beginWork node_modules/react-dom/cjs/react-dom-client.development.js:12027:16
+ > runWithFiberInDEV node_modules/react-dom/cjs/react-dom-client.development.js:871:29
+ > performUnitOfWork node_modules/react-dom/cjs/react-dom-client.development.js:17641:21
+ > workLoopConcurrentByScheduler node_modules/react-dom/cjs/react-dom-client.development.js:17635:8
+ > renderRootConcurrent node_modules/react-dom/cjs/react-dom-client.development.js:17617:14
+ > performWorkOnRoot node_modules/react-dom/cjs/react-dom-client.development.js:16503:10
+ > performWorkOnRootViaSchedulerTask node_modules/react-dom/cjs/react-dom-client.development.js:18957:6
+ > MessagePort.performWorkUntilDeadline node_modules/scheduler/cjs/scheduler.development.js:45:47
+
+Error: It looks like you forgot to return a response from your server route handler. If you want to defer to the app router, make sure to have a component set in this route.
+    at throwRouteHandlerError (eval at runInlinedModule (file:///C:/Users/ZBook%20Firefly%2015G7/Downloads/Compressed/kvruj2qHVlz5AQkl-grok-workspace/node_modules/vite/dist/node/module-runner.js:1021:9), <anonymous>:94:8)
+    ... 4 lines matching cause stack trace ...
+    at async file:///C:/Users/ZBook%20Firefly%2015G7/Downloads/Compressed/kvruj2qHVlz5AQkl-grok-workspace/node_modules/@tanstack/start-plugin-core/dist/esm/vite/dev-server-plugin/plugin.js:79:36 {
+  cause: Error: It looks like you forgot to return a response from your server route handler. If you want to defer to the app router, make sure to have a component set in this route.
+      at throwRouteHandlerError (eval at runInlinedModule (file:///C:/Users/ZBook%20Firefly%2015G7/Downloads/Compressed/kvruj2qHVlz5AQkl-grok-workspace/node_modules/vite/dist/node/module-runner.js:1021:9), <anonymous>:94:8)
+      at getFinalResponse (eval at runInlinedModule (file:///C:/Users/ZBook%20Firefly%2015G7/Downloads/Compressed/kvruj2qHVlz5AQkl-grok-workspace/node_modules/vite/dist/node/module-runner.js:1021:9), <anonymous>:158:18)
+      at executeMiddleware (eval at runInlinedModule (file:///C:/Users/ZBook%20Firefly%2015G7/Downloads/Compressed/kvruj2qHVlz5AQkl-grok-workspace/node_modules/vite/dist/node/module-runner.js:1021:9), <anonymous>:215:68)
+      at async startRequestResolver (eval at runInlinedModule (file:///C:/Users/ZBook%20Firefly%2015G7/Downloads/Compressed/kvruj2qHVlz5AQkl-grok-workspace/node_modules/vite/dist/node/module-runner.js:1021:9), <anonymous>:344:46)
+      at async Object.fetch (eval at runInlinedModule (file:///C:/Users/ZBook%20Firefly%2015G7/Downloads/Compressed/kvruj2qHVlz5AQkl-grok-workspace/node_modules/vite/dist/node/module-runner.js:1021:9), <anonymous>:11:10)
+      at async file:///C:/Users/ZBook%20Firefly%2015G7/Downloads/Compressed/kvruj2qHVlz5AQkl-grok-workspace/node_modules/@tanstack/start-plugin-core/dist/esm/vite/dev-server-plugin/plugin.js:79:36,
+  status: 500,
+  statusText: undefined,
+  headers: undefined,
+  data: undefined,
+  body: undefined,
+  unhandled: true
+}
+[2m3:03:11 PM[22m [31m[1m[vite][22m[39m [31m[2m(client)[22m[39m [31m[Unhandled error] [1mError[22m: Hydration failed because the server rendered HTML didn't match the client. As a result this tree will be regenerated on the client. This can happen if a SSR-ed Client Component used:
+
+- A server/client branch `if (typeof window !== 'undefined')`.
+- Variable input such as `Date.now()` or `Math.random()` which changes each time it's called.
+- Date formatting in a user's locale which doesn't match the server.
+- External changing data without sending a snapshot of it along with the HTML.
+- Invalid HTML tag nesting.
+
+It can also happen if the client has a browser extension installed which messes with the HTML before React loaded.
+
+https://react.dev/link/hydration-mismatch
+
+  ...
+    <AppShell>
+      <div className="min-h-dvh ...">
+        <OutletImpl>
+          <Suspense fallback={null}>
+            <MatchImpl routeId="/login">
+              <MatchView router={{...}} match={{id:"/login...", ...}}>
+                <SafeFragment>
+                  <SafeFragment fallback={null}>
+                    <CatchBoundary getResetKey={function getResetKey} errorComponent={function AppErrorComponent} ...>
+                      <SafeFragment fallback={function fallback}>
+                        <MatchInnerImpl match={{id:"/login...", ...}}>
+                          <Lazy>
+                            <LoginPage>
+                              <div
++                               className="grid min-h-dvh place-items-center bg-background px-5 text-foreground"
+-                               className="grid min-h-dvh place-items-center bg-background text-sm text-muted-foreground"
+                              >
++                               <div className="w-full max-w-sm">
+-                               در حال بررسی نشست…
+        ...
+
+[39m > throwOnHydrationMismatch node_modules/react-dom/cjs/react-dom-client.development.js:5238:10
+ > beginWork node_modules/react-dom/cjs/react-dom-client.development.js:12027:16
+ > runWithFiberInDEV node_modules/react-dom/cjs/react-dom-client.development.js:871:29
+ > performUnitOfWork node_modules/react-dom/cjs/react-dom-client.development.js:17641:21
+ > workLoopConcurrentByScheduler node_modules/react-dom/cjs/react-dom-client.development.js:17635:8
+ > renderRootConcurrent node_modules/react-dom/cjs/react-dom-client.development.js:17617:14
+ > performWorkOnRoot node_modules/react-dom/cjs/react-dom-client.development.js:16503:10
+ > performWorkOnRootViaSchedulerTask node_modules/react-dom/cjs/react-dom-client.development.js:18957:6
+ > MessagePort.performWorkUntilDeadline node_modules/scheduler/cjs/scheduler.development.js:45:47
+
+[2m3:03:59 PM[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/styles.css?direct, /src/components/app-shell.tsx[22m
+[2m3:03:59 PM[22m [36m[1m[vite][22m[39m [34m[2m(ssr)[22m[39m [32mpage reload [39m[2msrc/components/app-shell.tsx[22m
+[2m3:03:59 PM[22m [36m[1m[vite][22m[39m [34m[2m(ssr)[22m[39m program reload
+[2m3:05:29 PM[22m [31m[1m[vite][22m[39m [31m[2m(client)[22m[39m [31m[Unhandled error] [1mError[22m: Hydration failed because the server rendered HTML didn't match the client. As a result this tree will be regenerated on the client. This can happen if a SSR-ed Client Component used:
+
+- A server/client branch `if (typeof window !== 'undefined')`.
+- Variable input such as `Date.now()` or `Math.random()` which changes each time it's called.
+- Date formatting in a user's locale which doesn't match the server.
+- External changing data without sending a snapshot of it along with the HTML.
+- Invalid HTML tag nesting.
+
+It can also happen if the client has a browser extension installed which messes with the HTML before React loaded.
+
+https://react.dev/link/hydration-mismatch
+
+  ...
+    <AppShell>
+      <div className="min-h-dvh ...">
+        <OutletImpl>
+          <Suspense fallback={null}>
+            <MatchImpl routeId="/login">
+              <MatchView router={{...}} match={{id:"/login...", ...}}>
+                <SafeFragment>
+                  <SafeFragment fallback={null}>
+                    <CatchBoundary getResetKey={function getResetKey} errorComponent={function AppErrorComponent} ...>
+                      <SafeFragment fallback={function fallback}>
+                        <MatchInnerImpl match={{id:"/login...", ...}}>
+                          <Lazy>
+                            <LoginPage>
+                              <div
++                               className="grid min-h-dvh place-items-center bg-background px-5 text-foreground"
+-                               className="grid min-h-dvh place-items-center bg-background text-sm text-muted-foreground"
+                              >
++                               <div className="w-full max-w-sm">
+-                               در حال بررسی نشست…
+        ...
+
+[39m > throwOnHydrationMismatch node_modules/react-dom/cjs/react-dom-client.development.js:5238:10
+ > beginWork node_modules/react-dom/cjs/react-dom-client.development.js:12027:16
+ > runWithFiberInDEV node_modules/react-dom/cjs/react-dom-client.development.js:871:29
+ > performUnitOfWork node_modules/react-dom/cjs/react-dom-client.development.js:17641:21
+ > workLoopConcurrentByScheduler node_modules/react-dom/cjs/react-dom-client.development.js:17635:8
+ > renderRootConcurrent node_modules/react-dom/cjs/react-dom-client.development.js:17617:14
+ > performWorkOnRoot node_modules/react-dom/cjs/react-dom-client.development.js:16503:10
+ > performWorkOnRootViaSchedulerTask node_modules/react-dom/cjs/react-dom-client.development.js:18957:6
+ > MessagePort.performWorkUntilDeadline node_modules/scheduler/cjs/scheduler.development.js:45:47
+
+[2m3:09:12 PM[22m [31m[1m[vite][22m[39m [31m[2m(client)[22m[39m [31m[Unhandled error] [1mError[22m: Hydration failed because the server rendered HTML didn't match the client. As a result this tree will be regenerated on the client. This can happen if a SSR-ed Client Component used:
+
+- A server/client branch `if (typeof window !== 'undefined')`.
+- Variable input such as `Date.now()` or `Math.random()` which changes each time it's called.
+- Date formatting in a user's locale which doesn't match the server.
+- External changing data without sending a snapshot of it along with the HTML.
+- Invalid HTML tag nesting.
+
+It can also happen if the client has a browser extension installed which messes with the HTML before React loaded.
+
+https://react.dev/link/hydration-mismatch
+
+  ...
+    <AppShell>
+      <div className="min-h-dvh ...">
+        <OutletImpl>
+          <Suspense fallback={null}>
+            <MatchImpl routeId="/login">
+              <MatchView router={{...}} match={{id:"/login...", ...}}>
+                <SafeFragment>
+                  <SafeFragment fallback={null}>
+                    <CatchBoundary getResetKey={function getResetKey} errorComponent={function AppErrorComponent} ...>
+                      <SafeFragment fallback={function fallback}>
+                        <MatchInnerImpl match={{id:"/login...", ...}}>
+                          <Lazy>
+                            <LoginPage>
+                              <div
++                               className="grid min-h-dvh place-items-center bg-background px-5 text-foreground"
+-                               className="grid min-h-dvh place-items-center bg-background text-sm text-muted-foreground"
+                              >
++                               <div className="w-full max-w-sm">
+-                               در حال بررسی نشست…
+        ...
+
+[39m > throwOnHydrationMismatch node_modules/react-dom/cjs/react-dom-client.development.js:5238:10
+ > beginWork node_modules/react-dom/cjs/react-dom-client.development.js:12027:16
+ > runWithFiberInDEV node_modules/react-dom/cjs/react-dom-client.development.js:871:29
+ > performUnitOfWork node_modules/react-dom/cjs/react-dom-client.development.js:17641:21
+ > workLoopConcurrentByScheduler node_modules/react-dom/cjs/react-dom-client.development.js:17635:8
+ > renderRootConcurrent node_modules/react-dom/cjs/react-dom-client.development.js:17617:14
+ > performWorkOnRoot node_modules/react-dom/cjs/react-dom-client.development.js:16503:10
+ > performWorkOnRootViaSchedulerTask node_modules/react-dom/cjs/react-dom-client.development.js:18957:6
+ > MessagePort.performWorkUntilDeadline node_modules/scheduler/cjs/scheduler.development.js:45:47
+
+[2m3:16:50 PM[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/styles.css?direct[22m
+[2m3:16:50 PM[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/styles.css?direct[22m
+[2m3:16:50 PM[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/styles.css?direct[22m
+2026-09-02T11:48:21.667Z WARN [Better Auth]: User not found

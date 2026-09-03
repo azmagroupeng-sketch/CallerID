@@ -1,0 +1,189 @@
+import { o as __toESM } from "../_runtime.mjs";
+import { n as require_react } from "../_libs/@radix-ui/react-compose-refs+[...].mjs";
+import { C as require_jsx_runtime } from "../_libs/@tanstack/react-router+[...].mjs";
+import { o as toAsciiDigits, s as toPersianDigits } from "./phone-CG57bSRI.mjs";
+import { o as FileDown } from "../_libs/lucide-react.mjs";
+import { n as toast } from "../_libs/sonner.mjs";
+import { i as displayName, o as useBook } from "./router-CdA9Lyn8.mjs";
+import { n as ContactRow, o as gregorianToJalali } from "./contact-row-NkS5TyGZ.mjs";
+import { n as Input, t as Button } from "./input-D-ATWlHF.mjs";
+//#region node_modules/.nitro/vite/services/ssr/assets/book.index-z2pdujjy.js
+var import_react = /* @__PURE__ */ __toESM(require_react());
+var import_jsx_runtime = require_jsx_runtime();
+function jalaliDate(ts) {
+	const d = new Date(ts);
+	const [jy, jm, jd] = gregorianToJalali(d.getFullYear(), d.getMonth() + 1, d.getDate());
+	return `${jy}/${String(jm).padStart(2, "0")}/${String(jd).padStart(2, "0")}`;
+}
+function hhmm(ts) {
+	const d = new Date(ts);
+	return `${String(d.getHours()).padStart(2, "0")}:${String(d.getMinutes()).padStart(2, "0")}`;
+}
+/**
+* Build and download the full book as .xlsx — sheet 1: contacts summary,
+* sheet 2: every logged call. Lazy-imports SheetJS so it never rides the
+* initial bundle.
+*/
+async function exportBookToExcel(contacts, calls) {
+	const XLSX = await import("../_libs/xlsx.mjs").then((n) => n.t);
+	const callsByContact = /* @__PURE__ */ new Map();
+	for (const call of calls) {
+		const list = callsByContact.get(call.contactId) ?? [];
+		list.push(call);
+		callsByContact.set(call.contactId, list);
+	}
+	const contactHeader = [
+		"نام",
+		"نام خانوادگی",
+		"شرکت",
+		"شماره",
+		"بین‌المللی",
+		"تعداد تماس",
+		"آخرین تماس (شمسی)",
+		"آخرین علت تماس"
+	];
+	const contactRows = contacts.map((contact) => {
+		const list = (callsByContact.get(contact.id) ?? []).slice().sort((a, b) => b.at - a.at);
+		const last = list[0];
+		return [
+			contact.firstName,
+			contact.lastName,
+			contact.company,
+			contact.local,
+			contact.e164,
+			list.length,
+			last ? jalaliDate(last.at) : "",
+			last?.reason ?? ""
+		];
+	});
+	const contactById = new Map(contacts.map((c) => [c.id, c]));
+	const callHeader = [
+		"مخاطب",
+		"شماره",
+		"تاریخ (شمسی)",
+		"ساعت",
+		"علت تماس",
+		"زمان (میلادی)"
+	];
+	const callRows = calls.slice().sort((a, b) => b.at - a.at).map((call) => {
+		const contact = contactById.get(call.contactId);
+		return [
+			contact ? displayName(contact) : "",
+			contact?.local ?? "",
+			jalaliDate(call.at),
+			hhmm(call.at),
+			call.reason,
+			new Date(call.at).toISOString()
+		];
+	});
+	const wb = XLSX.utils.book_new();
+	wb.Workbook = { Views: [{ RTL: true }] };
+	const contactsSheet = XLSX.utils.aoa_to_sheet([contactHeader, ...contactRows]);
+	contactsSheet["!cols"] = [
+		{ wch: 14 },
+		{ wch: 16 },
+		{ wch: 22 },
+		{ wch: 14 },
+		{ wch: 15 },
+		{ wch: 10 },
+		{ wch: 16 },
+		{ wch: 48 }
+	];
+	XLSX.utils.book_append_sheet(wb, contactsSheet, "مخاطب‌ها");
+	const callsSheet = XLSX.utils.aoa_to_sheet([callHeader, ...callRows]);
+	callsSheet["!cols"] = [
+		{ wch: 20 },
+		{ wch: 14 },
+		{ wch: 14 },
+		{ wch: 8 },
+		{ wch: 48 },
+		{ wch: 24 }
+	];
+	XLSX.utils.book_append_sheet(wb, callsSheet, "تماس‌ها");
+	const today = jalaliDate(Date.now()).replace(/\//g, "-");
+	XLSX.writeFile(wb, `tamasban-${today}.xlsx`);
+}
+function BookPage() {
+	const ready = useBook((s) => s.ready);
+	const contacts = useBook((s) => s.contacts);
+	const calls = useBook((s) => s.calls);
+	const [query, setQuery] = (0, import_react.useState)("");
+	const [exporting, setExporting] = (0, import_react.useState)(false);
+	async function downloadExcel() {
+		if (exporting) return;
+		setExporting(true);
+		try {
+			await exportBookToExcel(contacts, calls);
+			toast.success("فایل اکسل ساخته شد");
+		} catch (err) {
+			toast.error(err instanceof Error ? err.message : "ساخت فایل ناموفق بود");
+		} finally {
+			setExporting(false);
+		}
+	}
+	const filtered = (0, import_react.useMemo)(() => {
+		const q = toAsciiDigits(query).trim().toLowerCase();
+		const list = [...contacts].sort((a, b) => b.updatedAt - a.updatedAt);
+		if (!q) return list;
+		const compact = q.replace(/\s/g, "");
+		return list.filter((c) => {
+			const hay = `${displayName(c)} ${c.company} ${c.local} ${c.e164} ${c.national}`.toLowerCase();
+			return hay.includes(q) || hay.replace(/\s/g, "").includes(compact);
+		});
+	}, [contacts, query]);
+	function lastCall(contactId) {
+		return calls.filter((c) => c.contactId === contactId).sort((a, b) => b.at - a.at)[0];
+	}
+	if (!ready) return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+		className: "space-y-3",
+		children: [
+			/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", { className: "h-11 rounded-lg bg-card" }),
+			/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", { className: "h-16 rounded-xl bg-card" }),
+			/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", { className: "h-16 rounded-xl bg-card" })
+		]
+	});
+	return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+		className: "space-y-5",
+		children: [
+			/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+				className: "flex items-end justify-between gap-3",
+				children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+					className: "min-w-0",
+					children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("h1", {
+						className: "text-lg font-semibold tracking-tight",
+						children: "دفترچه"
+					}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+						className: "mt-1 text-sm text-muted-foreground",
+						children: contacts.length === 0 ? "مخاطبی ثبت نشده." : `${toPersianDigits(contacts.length)} مخاطب · مشترک بین همهٔ اعضا`
+					})]
+				}), contacts.length > 0 ? /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Button, {
+					type: "button",
+					variant: "secondary",
+					size: "sm",
+					className: "shrink-0",
+					disabled: exporting,
+					onClick: () => void downloadExcel(),
+					children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(FileDown, {}), exporting ? "در حال ساخت…" : "خروجی اکسل"]
+				}) : null]
+			}),
+			contacts.length > 0 ? /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Input, {
+				value: query,
+				onChange: (e) => setQuery(e.target.value),
+				placeholder: "جستجو نام، شرکت یا شماره",
+				"aria-label": "جستجو در دفترچه"
+			}) : null,
+			filtered.length === 0 ? /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+				className: "text-sm leading-6 text-muted-foreground",
+				children: contacts.length === 0 ? "از صفحهٔ تماس تازه اولین شماره را ثبت کنید." : "نتیجه‌ای برای این جستجو نیست."
+			}) : /* @__PURE__ */ (0, import_jsx_runtime.jsx)("ul", {
+				className: "space-y-2",
+				children: filtered.map((contact) => /* @__PURE__ */ (0, import_jsx_runtime.jsx)("li", { children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(ContactRow, {
+					contact,
+					lastCall: lastCall(contact.id)
+				}) }, contact.id))
+			})
+		]
+	});
+}
+//#endregion
+export { BookPage as component };
