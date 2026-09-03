@@ -1,0 +1,12 @@
+[build]
+  command = "npm run build"
+  publish = ".netlify"
+  functions = ".netlify/functions-internal"
+
+[build.environment]
+  NODE_VERSION = "22"
+
+[[redirects]]
+  from = "/*"
+  to = "/.netlify/functions/ssr/:splat"
+  status = 200
